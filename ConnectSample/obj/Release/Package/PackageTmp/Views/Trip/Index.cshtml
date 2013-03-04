@@ -1,0 +1,16 @@
+﻿@model TripViewModel
+
+@{
+	ViewBag.Title = "Your Trip";
+}
+
+
+<p>
+	<b>Trip Name: </b> @Html.DisplayTextFor(m => m.TripName) 
+	<br />
+	<b>Start Date: </b> @Model.StartDateLocal.ToShortDateString()
+	<br />
+	<b>End Date: </b> @Model.EndDateLocal.ToShortDateString()
+</p>
+
+@Html.Partial("LocalData", Model)

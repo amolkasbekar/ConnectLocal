@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>@ViewBag.Title - Connect Locals</title>
+		<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		@Styles.Render("~/Content/Site.css")
+		@Scripts.Render("~/Scripts/modernizr-2.6.2.js")
+
+		
+		@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+	</head>
+	<body>
+		<header>
+			<div class="content-wrapper">
+				<div class="float-left">
+					<p class="site-title">@Html.ActionLink("Connect Local", "Index", "Home")</p>
+				</div>
+				<div class="float-right">
+					<section id="login">
+						@Html.Partial("_LoginPartial")
+					</section>
+					<nav>
+						<ul id="menu">
+							<li>@Html.ActionLink("Home", "Index", "Home")</li>
+							<li>@Html.ActionLink("About", "About", "Home")</li>
+							<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+							<li>@Html.ActionLink("Link to Concur", "Link", "Home")</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<div id="body">
+			@RenderSection("featured", required: false)
+			<section class="content-wrapper main-content clear-fix">
+				@RenderBody()
+			</section>
+		</div>
+		<footer>
+			<div class="content-wrapper">
+				<div class="float-left">
+					<p>&copy; @DateTime.Now.Year - Connect Local Sample Application</p>
+				</div>
+			</div>
+		</footer>
+
+		@*@Scripts.Render("~/bundles/jquery")*@
+		@RenderSection("scripts", required: false)
+	</body>
+</html>

@@ -1,0 +1,58 @@
+﻿@model ConnectSample.Models.User
+
+@{
+	ViewBag.Title = "Links your Concur accounts with Sample App.";
+}
+
+<hgroup class="title">
+	<h1>@ViewBag.Title</h1>
+</hgroup>
+
+<br />
+<br />
+<section id="loginForm">
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+	@Html.ValidationSummary(true)
+	
+	string userName = this.Model.UserName;
+	if (Session["IsLinkedToConcur"] == null || Session["IsLinkedToConcur"] != "true")
+	{ 
+		<fieldset>
+			@Html.HiddenFor(m => m.UserName)
+			<text>Hello <b>@userName</b> enter your Concur account details here: </text>
+			<ol>
+				<li>
+					@Html.LabelFor(m => m.ConcurUserName)
+					@Html.TextBoxFor(m => m.ConcurUserName)
+					@Html.ValidationMessageFor(m => m.ConcurUserName)
+				</li>
+				<li>
+					@Html.LabelFor(m => m.ConcurPassword)
+					@Html.PasswordFor(m => m.ConcurPassword)
+					@Html.ValidationMessageFor(m => m.ConcurPassword)
+				</li>
+			</ol>
+			@Html.AntiForgeryToken()
+			<input type="submit" value="Link" />
+		</fieldset>	
+	}
+	else
+	{ 
+		<text>Hello <b>@userName</b> congratulations your account is already linked to Concur </text>
+		<ul>
+			<li>
+				<b>OAuth Token: </b> @Html.DisplayTextFor(m => m.OAuthToken.Token)
+			</li>
+			<li>
+				<b>Expiration :  </b> @Html.DisplayTextFor(m => m.OAuthToken.ExpirationDate)
+			</li>
+		</ul>
+	 
+	}
+}
+</section>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}

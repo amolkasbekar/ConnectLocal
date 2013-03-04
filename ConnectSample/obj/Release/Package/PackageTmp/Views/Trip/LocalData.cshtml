@@ -1,0 +1,48 @@
+﻿@model TripViewModel
+
+
+<script>
+	$(function () {
+		$("#accordion").accordion();
+		$(".selector").accordion({ collapsible: true });
+		$(".selector").accordion({ active: false });
+	});
+
+</script>
+
+<h3>Your Destinations on this trip are:</h3>
+
+ @foreach (KeyValuePair<string, object> destinationResult in Model.DestinatationResults)
+ {
+		@Html.Label(destinationResult.Key)
+		<div id="accordion">
+			<h4>Restaurants</h4>
+			<div>
+			<p>
+				@Html.Partial("YelpResults", destinationResult.Value as YelpSharp.Data.SearchResults)
+			</p>
+			</div>
+			<h4>Golf</h4>
+			<div>
+			<p>
+				Golf locations will show here.
+			</p>
+			</div>
+			<h4>Arts</h4>
+			<div>
+			<p>
+				Art listings such as musuems and events show here.
+			</p>
+			</div>
+			<h4>Health</h4>
+			<div>
+			<p>
+				Health listings show here.
+			</p>
+
+			</div>
+		</div>
+	  
+		
+	}
+

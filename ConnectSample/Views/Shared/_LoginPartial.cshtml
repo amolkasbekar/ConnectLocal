@@ -1,0 +1,18 @@
+﻿@if (Session["IsAuthenticated"] != null && Session["IsAuthenticated"].ToString() == "true")
+{
+	var user = Session["User"] as ConnectSample.Models.User;
+	string userName = user.UserName;
+	
+	<text>
+		Hello, @Html.ActionLink(userName, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+		@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+			@Html.AntiForgeryToken()
+			<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+		}
+	</text>
+} else {
+	<ul>
+		<li>@Html.ActionLink("Register", "Register", "Home", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+		<li>@Html.ActionLink("Log in", "Login", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+	</ul>
+}

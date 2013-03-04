@@ -1,0 +1,18 @@
+﻿﻿@model YelpSharp.Data.SearchResults
+
+@{
+	ViewBag.Title = "Results";
+	//Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+
+	<div>
+		@foreach (var b in @Model.businesses)
+		{
+			@Html.Partial("YelpBusinessCard", b)
+		}
+			
+	</div>
+
+</fieldset>

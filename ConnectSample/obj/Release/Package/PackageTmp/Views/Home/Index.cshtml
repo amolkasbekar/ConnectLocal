@@ -1,0 +1,24 @@
+﻿@model List<ConnectSample.ViewModels.TripDigestViewModel>
+
+@{
+	ViewBag.Title = "Your upcoming trip list";
+}
+
+<table>
+	<tr>
+		<th>Trip Name</th>
+		<th>Start Date</th>
+		<th>End Date</th>
+	</tr>
+@foreach (ConnectSample.ViewModels.TripDigestViewModel trip in Model)
+{ 
+	<tr>
+		<td>@trip.TripName</td>
+		<td>@trip.StartDateLocal.ToShortDateString()</td>
+		<td>@trip.EndDateLocal.ToShortDateString()</td>
+		<td>@Html.ActionLink("View Local Info for the trip", "Index", "Trip",  new {Id=trip.TripId }, null)</td>
+	</tr>
+}
+
+</table>
+
