@@ -90,6 +90,43 @@ h5, h6 {
         text-decoration: none;
     }
 
+/* From http://veerle-v2.duoh.com/blog/comments/a_css_styled_table
+----------------------------------------------------------*/
+table.triplist {
+	width: 700px;
+	padding: 0;
+	margin: 0;
+}
+
+caption {
+	padding: 0 0 5px 0;
+	width: 700px;	 
+	font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	text-align: right;
+}
+
+th.triplist {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-left: 1px solid #485150;
+	border-right: 1px solid #485150;
+	border-bottom: 1px solid #485150;
+	border-top: 1px solid #485150;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+}
+
+td.triplist {
+	border-left: 1px solid #C1DAD7;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
+}
 
 /* main layout
 ----------------------------------------------------------*/

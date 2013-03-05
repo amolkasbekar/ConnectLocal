@@ -1,10 +1,9 @@
 ﻿@{
-	ViewBag.Title = "Connect Local";
+	ViewBag.Title = "ConnectLocal";
 	ViewBag.Message = "Get Local using Connect !!";
 }
 
 <hgroup class="title">
-	<h1>@ViewBag.Title</h1>
 	<h2>@ViewBag.Message</h2>
 </hgroup>
 
@@ -17,7 +16,7 @@
 				<h2>@ViewBag.Message</h2>
 			</hgroup>
 			<p>
-				Connect Local is your gateaway to view local information about your destination before you reach there.
+				ConnectLocal is your gateaway to view local information about your destination before you get there.
 			</p>
 			<p>
 				To learn more about Connect Platform visit
@@ -34,22 +33,19 @@
 <ol class="round">
 	<li class="one">
 		<h5>Getting Started</h5>
-		This sample demonstrates usage of Itinerary API to retrieve and post trips using Concur Connect Platform
+		Register for a free ConnectLocal account and link it your Sandbox account. If you do not have a Concur Sandbox you can get one <a href="https://developer.concur.com/register">here</a>. See how the use of Connect Platform and API allows you to use the traveler's trips and information.
 		<a href="https://developer.concur.com/api-documentation/web-services/itinerary">Learn more…</a>
 	</li>
 
 	<li class="two">
 		<h5>Review sample code</h5>
-		This application provides sample code using github to demonstrate how to build your own applications using Connect API.
-		<a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
+		This application provides sample code using github to demonstrate how to build your own applications using Connect API. The APIs used in this sample are - Itinerary, Travel Profile and ExpenseCapture. The sample code is available <a href="https://github.com/amolkasbekar/ConnectLocal">here</a> on github. This code here is meant only as a guidance and is not meant to use as-is.
 	</li>
 
-	@*<li class="three">
-		<h5>Find Web Hosting</h5>
-		You can easily find a web hosting company that offers the right mix of features
-		and price for your applications.
-		<a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-	</li>*@
+	<li class="three">
+		<h5>Questions</h5>
+		For questions regarding this app or the code on github, contact <a href="mailto:amol.kasbekar@concur.com">Amol Kasbekar</a>. For all other generic questions please contact <a href="https://developer.concur.com/en-us/support">Connect support</a> team.
+	</li>
 </ol>
 </article>
 
@@ -58,6 +54,6 @@
 		<li>@Html.ActionLink("Home", "Index", "Home")</li>
 		<li>@Html.ActionLink("About", "About", "Home")</li>
 		<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-		<li>@Html.ActionLink("Setup", "Setup", "Home")</li>
+		<li>@Html.ActionLink("Your Account", "Manage", "Home")</li>
 	</ul>
 </aside>

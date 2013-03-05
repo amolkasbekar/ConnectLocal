@@ -54,24 +54,21 @@ namespace ConnectSample.Controllers
 		{
 			ViewBag.Message = "Login to your account";
 
+			if (!model.Load())
+			{
+				Session.Add("IsAuthenticated", "false");
+				ViewData.Add(new KeyValuePair<string, object>("LoginError", "Login not found !!"));
+				return View(model);
+			}
 
-			throw new Exception("Test error page.");
+			Session.Add("IsAuthenticated", "true");
+			Session.Add("User", model);
+			if (model.IsLinkedToConcur)
+			{
+				Session.Add("IsLinkedToConcur", "true");
+			}
 
-			//if (!model.Load())
-			//{
-			//	Session.Add("IsAuthenticated", "false");
-			//	ViewData.Add(new KeyValuePair<string, object>("LoginError", "Login not found !!"));
-			//	return View(model);
-			//}
-
-			//Session.Add("IsAuthenticated", "true");
-			//Session.Add("User", model);
-			//if (model.IsLinkedToConcur)
-			//{
-			//	Session.Add("IsLinkedToConcur", "true");
-			//}
-
-			//return RedirectToAction("Index");
+			return RedirectToAction("Index");
 		}
 
 		[HttpGet]

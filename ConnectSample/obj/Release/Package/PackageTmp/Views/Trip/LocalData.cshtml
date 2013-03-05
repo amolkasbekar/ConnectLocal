@@ -1,6 +1,4 @@
 ﻿@model TripViewModel
-
-
 <script>
 	$(function () {
 		$("#accordion").accordion();
@@ -9,18 +7,14 @@
 	});
 
 </script>
-
 <b>Get hyper local on this trip with </b> &nbsp; <a href="www.yelp.com"> <img src="~/Images/yelp_logo_75x38.png" alt="Yelp" /> </a>
-
  @foreach (KeyValuePair<string, object> destinationResult in Model.DestinatationResults)
  {
 		@Html.Label(destinationResult.Key)
 		<div id="accordion">
 			<h4>Restaurants</h4>
 			<div>
-			<p>
 				@Html.Partial("YelpResults", destinationResult.Value as YelpSharp.Data.SearchResults)
-			</p>
 			</div>
 			<h4>Golf</h4>
 			<div>
