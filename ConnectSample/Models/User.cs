@@ -18,7 +18,7 @@ using RestSharp;
 namespace ConnectSample.Models
 {
 	public class User
-	{
+	{ 
 		[Required]
 		[Display(Name = "User name")]
 		public string UserName { get; set; }

@@ -85,3 +85,4 @@ C:\ConnectSample\ConnectSample\bin\Newtonsoft.Json.xml
 C:\ConnectSample\ConnectSample\bin\RestSharp.dll
 C:\ConnectSample\ConnectSample\bin\RestSharp.xml
 C:\ConnectSample\ConnectSample\bin\YelpSharp.dll
+C:\ConnectSample\ConnectSample\obj\Debug\ConnectSample.csprojResolveAssemblyReference.cache

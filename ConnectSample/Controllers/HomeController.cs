@@ -118,7 +118,7 @@ namespace ConnectSample.Controllers
 			if (model.OAuthToken != null)
 				Session.Add("IsLinkedToConcur", "true");
 
-			return View(model);
+			return View(model); 
 
 		}
 	}
