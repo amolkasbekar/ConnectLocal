@@ -272,6 +272,8 @@
     <None Include="Properties\PublishProfiles\connectsample - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\connectsample - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\Powered_By_Yelp_Red.png" />
+    <Content Include="Images\yelp_logo_75x38.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
