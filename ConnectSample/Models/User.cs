@@ -39,9 +39,35 @@ namespace ConnectSample.Models
 
 		public AuthorizationToken OAuthToken { get { return _OAuthToken; } }
 
+		public bool IsLinkedToConcur{
+			get{
+				if (_OAuthToken != null && !string.IsNullOrEmpty(_OAuthToken.Token))
+					return true;
+
+				return false;
+				}
+		}
+
 		public void LinkToConcur()
 		{
 			_OAuthToken = AuthorizationToken.GetAuthorizationToken(this);
+		}
+
+		public void UnLinkToConcur()
+		{
+			var connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+			using (var conn = new SqlConnection(connString))
+			{
+				conn.Open();
+				using (var command = new SqlCommand("CONNECT_DeleteToken", conn))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@userName", UserName);
+					command.ExecuteNonQuery();
+				}
+			}
+
+			_OAuthToken = null;
 		}
 
 		public void SubscribeToChanges(string type)

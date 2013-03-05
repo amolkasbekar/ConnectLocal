@@ -51,4 +51,20 @@ BEGIN
 	from dbo.Login
 	where user_name = @userName;
 END
-	
+go
+
+if exists (select *  from sysobjects  where id = object_id(N'dbo.CONNECT_DeleteToken') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+  drop procedure dbo.CONNECT_DeleteToken;
+go
+
+CREATE PROCEDURE dbo.CONNECT_DeleteToken(@userName nvarchar(50))
+AS
+BEGIN
+	update dbo.Login
+	   set OAuth_Token = null, 
+	   Oauth_Expiration_date = null,
+	   Instance_Url = null, 
+	   OAuth_Refresh_Token = null
+	where user_name = @userName;
+END
+go

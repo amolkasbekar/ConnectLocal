@@ -16,7 +16,8 @@
 	@Html.ValidationSummary(true)
 	
 	string userName = this.Model.UserName;
-	if (Session["IsLinkedToConcur"] == null || Session["IsLinkedToConcur"] != "true")
+	//if (Session["IsLinkedToConcur"] == null || Session["IsLinkedToConcur"] != "true")
+	if (!Model.IsLinkedToConcur)
 	{ 
 		<fieldset>
 			@Html.HiddenFor(m => m.UserName)
@@ -39,7 +40,7 @@
 	}
 	else
 	{ 
-		<text>Hello <b>@userName</b> congratulations your account is already linked to Concur </text>
+		<text>Hello <b>@userName</b> congratulations your account is linked to Concur </text>
 		<ul>
 			<li>
 				<b>OAuth Token: </b> @Html.DisplayTextFor(m => m.OAuthToken.Token)

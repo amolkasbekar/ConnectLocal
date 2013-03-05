@@ -21,6 +21,8 @@ namespace ConnectSample.Controllers
 			Session["TripDigestList"] = tripDigestList;
 
 			return View(tripDigestList);
+
+
 		}
 
 		public ActionResult About()
@@ -52,17 +54,24 @@ namespace ConnectSample.Controllers
 		{
 			ViewBag.Message = "Login to your account";
 
-			if (!model.Load())
-			{
-				Session.Add("IsAuthenticated", "false");
-				ViewData.Add(new KeyValuePair<string, object>("LoginError", "Login not found !!"));
-				return View(model);
-			}
 
-			Session.Add("IsAuthenticated", "true");
-			Session.Add("User", model);
+			throw new Exception("Test error page.");
 
-			return RedirectToAction("Index");
+			//if (!model.Load())
+			//{
+			//	Session.Add("IsAuthenticated", "false");
+			//	ViewData.Add(new KeyValuePair<string, object>("LoginError", "Login not found !!"));
+			//	return View(model);
+			//}
+
+			//Session.Add("IsAuthenticated", "true");
+			//Session.Add("User", model);
+			//if (model.IsLinkedToConcur)
+			//{
+			//	Session.Add("IsLinkedToConcur", "true");
+			//}
+
+			//return RedirectToAction("Index");
 		}
 
 		[HttpGet]
@@ -115,11 +124,35 @@ namespace ConnectSample.Controllers
 			model.Save();
 			Session["User"] = model;
 
-			if (model.OAuthToken != null)
+			if (model.IsLinkedToConcur)
 				Session.Add("IsLinkedToConcur", "true");
 
 			return View(model); 
 
+		}
+
+		[ValidateAntiForgeryToken]
+		public ActionResult UnLink()
+		{
+			if (Session["User"] == null)
+				return RedirectToAction("Login");
+
+			User model = Session["User"] as User;
+			model.UnLinkToConcur();
+			Session.Add("IsLinkedToConcur", "false");
+
+			return View(model);
+		}
+
+		[HttpGet]
+		[AllowAnonymous]
+		public ActionResult Manage()
+		{
+			if (Session["User"] == null)
+				return RedirectToAction("Login");
+
+			var model = Session["User"] as User;
+			return View(model);
 		}
 	}
 }
