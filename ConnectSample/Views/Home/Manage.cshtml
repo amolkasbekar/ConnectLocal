@@ -1,0 +1,27 @@
+﻿@model ConnectSample.Models.User
+
+@{
+	ViewBag.Title = "Manage your ConnectLocal account";
+}
+
+
+Hello <b>@Model.UserName</b> you can link/delink your Concur account from this page.
+<br />
+@{
+	@Html.AntiForgeryToken()
+
+	if (!Model.IsLinkedToConcur)
+	{ 
+		<text>Your account is <b>not linked</b> to Concur.</text>
+		@Html.ActionLink("Link", "Link")
+	}
+	else
+	{
+		<text>Your account is already <b>linked</b> to Concur. </text>
+		@Html.ActionLink("UnLink", "UnLink")
+	}
+
+
+}
+
+
