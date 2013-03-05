@@ -128,7 +128,7 @@ namespace ConnectSample.Controllers
 
 		}
 
-		[ValidateAntiForgeryToken]
+		//[ValidateAntiForgeryToken]
 		public ActionResult UnLink()
 		{
 			if (Session["User"] == null)
@@ -138,7 +138,7 @@ namespace ConnectSample.Controllers
 			model.UnLinkToConcur();
 			Session.Add("IsLinkedToConcur", "false");
 
-			return View(model);
+			return RedirectToAction("Manage");
 		}
 
 		[HttpGet]
